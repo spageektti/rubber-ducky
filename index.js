@@ -6,8 +6,8 @@ const path = require('node:path');
 const { Client, Collection, Intents } = require('discord.js');
 // Access your bot info from Secrets (environment variables)
 const token = process.env['TOKEN'];
-// Server function (uncomment if using the server.js file)
-// const keepAlive = require('./server'); 
+// Server function (uncomment if using the bot-server.js file)
+// const keepAlive = require('./bot-server'); 
 
 // Create a new client instance
 // Add more intents based on your needs
@@ -67,7 +67,7 @@ client.on('interactionCreate', async interaction => {
 });
 
 // [FINAL STEPS]
-// Keeps discord bot online (uncomment if using the server.js file)
+// Keeps discord bot online (uncomment if using the bot-server.js file)
 // keepAlive();
 
 // Login to Discord with your client's token

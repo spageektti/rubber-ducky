@@ -1,3 +1,5 @@
+// START HERE: basic structure of a slash command
+
 // The slash command builder is used to build the data for your commands
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
@@ -7,7 +9,7 @@ module.exports = {
 		.setName('ping') // the user would type '/ping' into the server
 		.setDescription('Replies with Pong!'), // this description shows up in the list of slash commands
 	async execute(interaction) { // contains the functionality of the commands
-		await interaction.reply('Pong!');
+		await interaction.reply('Pong!'); // bot replies
 	},
 };
 

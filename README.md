@@ -1,8 +1,6 @@
-# Edit *[File structure](https://www.seancdavis.com/posts/three-ways-to-visualize-file-structure/)* at the end
+# Discord.js Bot Guided Template
 
-# Discord.js Bot Template
-
-Welcome to the Discord.js bot guided template! This template has detailed instructions and comments, and supports the new Discord bot standard **slash commands**.
+Welcome to the guided Discord.js bot template! This template has detailed instructions and comments, and supports the new Discord bot standard **slash commands**.
 
 Use this to understand the structure of Discord bots and to build a bot of your own. (Adapted from the official [discord.js guide](https://discordjs.guide/))
 
@@ -42,7 +40,10 @@ The relevant files of this template are organized as below:
 ```
 files/
 ├── commands/
+│   ├── image-01.jpg
+│   └── image-02.jpg
 ├── events/
+│   └── image-02.jpg
 ├── index.js
 ├── deploy-commands.js
 ├── server.js
@@ -69,6 +70,8 @@ The `events` folder contains an event example.
 Although perhaps not officially "correct," it helps me to think about Discord bots as `clients` (like fancy applications) that respond to `commands` and `events`.
 
 To customize the bot to your liking, you customize what `commands` the bot has and what `events` it responds to. *(commands are technically "interactions" that trigger "interactionCreate" events)*
+
+Under the `commands` folder, start with `ping.js` and `server.js` for detailed comments. Other commands demonstrate some other common uses for bots.
 
 > **⚠️NOTE:** After editing commands, remember to run `node deploy-commands.js` in the terminal to register them to Discord! You cannot use commands without registering.
 

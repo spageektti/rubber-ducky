@@ -7,7 +7,7 @@ Two options for keeping your bot online are:
 
 1. Upgrade your repl.it to set your project to "always on"
 
-2. Use Uptime Robot (run keepAlive(), copy the link generated from the html window, then paste it into Uptime Robot)
+2. Use Uptime Robot (run keepAlive(), copy the link generated from the window, then paste it into a new Uptime Robot monitor)
 */
 
 // Require the express library
