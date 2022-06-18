@@ -1,13 +1,12 @@
-# NOTE: [how does one move the command handler into interactionCreate?](https://www.youtube.com/watch?v=Sihf7B8D4Y8&ab_channel=CodeLyon)
 # Edit *[File structure](https://www.seancdavis.com/posts/three-ways-to-visualize-file-structure/)* at the end
-# Add more [command examples](https://github.com/discordjs/guide/tree/main/code-samples/creating-your-bot/command-handling/commands)
-# Console.log the errors
 
 # Discord.js Bot Template
 
-Welcome to the Discord.js bot template! This template supports the newest Discord **slash commands**.
+Welcome to the Discord.js bot guided template! This template has detailed instructions and comments, and supports the new Discord bot standard **slash commands**.
 
-Use this to understand the structure of Discord bots and to build a bot of your own. (Based on the official [discord.js guide](https://discordjs.guide/))
+Use this to understand the structure of Discord bots and to build a bot of your own. (Adapted from the official [discord.js guide](https://discordjs.guide/))
+
+[Click here for a quick-and-simple template](https://replit.com/@FaustineW1/Discordjs-Bot-Simple-Template-slash-commands).
 
 ## Setup
 
@@ -25,7 +24,12 @@ Here's how to get your bot up and running!
 
 *![Client ID Screenshot](https://i.imgur.com/1UIyOBO.png)*
 
-4. [Invite your bot](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) to your server! (Remember to have both `bot` and `applications.commands` scopes enabled)
+4. Copy your *guild id* and save it in Secrets with the key `GUILD_ID`. *(Discord.js refers to servers as "guilds")*
+> "To get guild id, open Discord and go to your settings. On the 'Advanced' page, turn on 'Developer Mode'. This will enable a 'Copy ID' button in the context menu when you right-click on a server icon, a user's profile, etc." ([Discord.js Guide](https://discordjs.guide/creating-your-bot/creating-commands.html#command-deployment-script))
+
+*![Copy ID Screenshot](https://i.imgur.com/nBNBqYM.png)*
+
+5. [Invite your bot](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) to your server! (Remember to have both `bot` and `applications.commands` scopes enabled)
 
 *![Bot Invite URL Generator Screenshot](https://i.imgur.com/Bw6Y4Pl.png)*
 
@@ -69,9 +73,9 @@ To customize the bot to your liking, you customize what `commands` the bot has a
 > **⚠️NOTE:** After editing commands, remember to run `node deploy-commands.js` in the terminal to register them to Discord! You cannot use commands without registering.
 
 #### Documentation
-* [Slash Commands Documentation](https://discordjs.guide/interactions/slash-commands.html)
-* [Command Handling Documentation](https://discordjs.guide/creating-your-bot/command-handling.html)
-* [Event Handling Documentation](https://discordjs.guide/creating-your-bot/event-handling.html)
+* [Slash Commands](https://discordjs.guide/interactions/slash-commands.html)
+* [Command Handling](https://discordjs.guide/creating-your-bot/command-handling.html)
+* [Event Handling](https://discordjs.guide/creating-your-bot/event-handling.html)
 
 ## Conclusion
 
@@ -93,8 +97,8 @@ Documentation may be scary at first, so some helpful YouTube videos would be gre
 
 ### Good luck!
 
-This project was made as a submission to the Repl.it Template Jam. It has helped me learn so much about both javascript and Discord bots!
+This was made as a submission to the Repl.it Template Jam. Compiling it has helped me learn so much about both javascript and Discord bots!
 
-I'm not a professional programmer, so please keep improving on what I have, and I really hope you guys can use it to make very cool bots of your own. :D
+I'm not a professional programmer, so please keep improving on what I have. Looking forward to see what you create! :D
 
 -- Faustine W.

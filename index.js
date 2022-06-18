@@ -1,4 +1,5 @@
-// PREPARATION
+// [PREPARATION]
+
 const fs = require('node:fs');
 const path = require('node:path');
 // Require the necessary discord.js classes
@@ -9,10 +10,10 @@ const token = process.env['TOKEN'];
 // const keepAlive = require('./server'); 
 
 // Create a new client instance
-//Add more intents based on your needs
+// Add more intents based on your needs
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-// EVENT HANDLER
+// [EVENT HANDLER]
 
 // Read the events files from events folder
 const eventsPath = path.join(__dirname, 'events'); //path to events folder based on operating system
@@ -30,7 +31,7 @@ for (const file of eventFiles) {
   // the first and second ... are the rest parameter syntax and spread syntax, respectively
 }
 
-// COMMAND HANDLER
+// [COMMAND HANDLER]
 client.commands = new Collection(); // add a new commands property
 
 // Read the command files from commands folder
@@ -45,23 +46,27 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-// EXECUTE COMMANDS DYNAMICALLY
-client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+// [EXECUTE COMMANDS DYNAMICALLY]
 
+// 'interactionCreate' even listener
+client.on('interactionCreate', async interaction => {
+	// Not all interactions are commands, only respond if it's a command
+  if (!interaction.isCommand()) return;
+
+  // Get command module from client commands collection
 	const command = client.commands.get(interaction.commandName);
 
 	if (!command) return;
 
 	try {
-		await command.execute(interaction);
+		await command.execute(interaction); // execute command's function
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true }); // ephemeral flag - only the user who executed the command can see it
 	}
 });
 
-// LOGIN TO DISCORD
+// [FINAL STEPS]
 // Keeps discord bot online (uncomment if using the server.js file)
 // keepAlive();
 

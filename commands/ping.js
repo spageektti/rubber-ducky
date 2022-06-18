@@ -3,10 +3,10 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 
 // Export the command data as a module so you can require() it in other files
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('ping')
-		.setDescription('Replies with Pong!'),
-	async execute(interaction) {
+	data: new SlashCommandBuilder() // this is used to build a slash command
+		.setName('ping') // the user would type '/ping' into the server
+		.setDescription('Replies with Pong!'), // this description shows up in the list of slash commands
+	async execute(interaction) { // contains the functionality of the commands
 		await interaction.reply('Pong!');
 	},
 };
