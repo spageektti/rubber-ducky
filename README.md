@@ -39,18 +39,22 @@ The relevant files of this template are organized as below:
 
 ```
 files/
-├── commands/
-│   ├── image-01.jpg
-│   └── image-02.jpg
-├── events/
-│   └── image-02.jpg
 ├── index.js
+├── commands/
+│   ├── avatar.js
+│   ├── options-info.js
+│   ├── ping.js
+│   ├── prune.js
+│   ├── server.js
+│   └── user-info.js
+├── events/
+│   └── ready.js
+├── bot-server.js
 ├── deploy-commands.js
-├── server.js
 └── README.md
 
 ```
-The bot is NOT using `README.md`. The `server.js` file is optional for bot functionality (it is an option for [keeping your bot online](https://www.youtube.com/watch?v=7rU_KyudGBY)). You are **free to delete them** if you see fit.
+The bot is not using `README.md`. The `bot-server.js` file is optional for bot functionality (it is an option for [keeping your bot online](https://www.youtube.com/watch?v=7rU_KyudGBY)). You are **free to delete them** if you see fit.
 
 <details>
 <summary>The bot depends on all the other files to function.</summary>
@@ -69,7 +73,7 @@ The `events` folder contains an event example.
 
 Although perhaps not officially "correct," it helps me to think about Discord bots as `clients` (like fancy applications) that respond to `commands` and `events`.
 
-To customize the bot to your liking, you customize what `commands` the bot has and what `events` it responds to. *(commands are technically "interactions" that trigger "interactionCreate" events)*
+To customize the bot to your liking, you customize what `commands` the bot has and what `events` it responds to. *(commands are technically a type of "interaction" that triggers "interactionCreate" events)*
 
 Under the `commands` folder, start with `ping.js` and `server.js` for detailed comments. Other commands demonstrate some other common uses for bots.
 
