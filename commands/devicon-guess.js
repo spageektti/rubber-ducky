@@ -29,13 +29,8 @@ module.exports = {
     ];
 
     let userDoc = await User.findOne({ where: { id: user.id } });
-    if (!userDoc) {
-      userDoc = {
-        id: user.id,
-        username: user.username,
-        points: 0,
-        lastGuessedIcon: -1,
-      };
+    if (!userDoc.lastGuessedIcon) {
+      userDoc.lastGuessedIcon = -1;
     }
 
     const unansweredIcons = icons.filter(
@@ -78,7 +73,7 @@ module.exports = {
       const userAnswer = response.content.trim();
 
       if (userAnswer.toLowerCase() === nextIcon.answer.toLowerCase()) {
-        userDoc.points += 1;
+        userDoc.quackPoints += 1;
         await User.save(userDoc);
         await interaction.followUp("Correct! You guessed it right! 🎉");
       } else {

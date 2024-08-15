@@ -37,6 +37,41 @@ module.exports = {
         answer: "By quacking at it",
         emojis: ["1️⃣", "2️⃣", "3️⃣"],
       },
+      {
+        id: 4,
+        question: "Which IDE do ducks prefer?",
+        options: ["Ducktorm", "DuckPyCharm", "Duckode"],
+        answer: "Duckode",
+        emojis: ["1️⃣", "2️⃣", "3️⃣"],
+      },
+      {
+        id: 5,
+        question: "What kind of loops do ducks like?",
+        options: ["While-loops", "For-loops", "Quack-loops"],
+        answer: "Quack-loops",
+        emojis: ["1️⃣", "2️⃣", "3️⃣"],
+      },
+      {
+        id: 6,
+        question: "How do ducks handle errors in their code?",
+        options: ["Duck-catch", "Try-quack", "Quack-try"],
+        answer: "Try-quack",
+        emojis: ["1️⃣", "2️⃣", "3️⃣"],
+      },
+      {
+        id: 7,
+        question: "What's a duck's preferred method of inheritance?",
+        options: ["Duck-of", "Duck-prototype", "Duck-extend"],
+        answer: "Duck-extend",
+        emojis: ["1️⃣", "2️⃣", "3️⃣"],
+      },
+      {
+        id: 8,
+        question: "What's a duck's favorite front-end framework?",
+        options: ["Quack.js", "Duckular", "React"],
+        answer: "Quack.js",
+        emojis: ["1️⃣", "2️⃣", "3️⃣"],
+      },
     ];
 
     let userDoc = await User.findOne({ where: { id: user.id } });
