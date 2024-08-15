@@ -23,16 +23,17 @@ module.exports = {
       userDoc.duckyRank = userDoc.duckyRank || "Newbie";
       userDoc.quackPoints = userDoc.quackPoints || 0;
     } else {
-      userDoc = new User({
+      userDoc = {
         id: user.id,
         username: user.username,
         favoriteLanguage: favoriteLanguage,
         duckyRank: "Newbie",
         quackPoints: 0,
-      });
+        lastAnsweredQuestion: -1,
+      };
     }
 
-    await userDoc.save();
+    await User.save(userDoc);
 
     interaction.reply(
       `Profile updated! Your favorite programming language is now set to ${favoriteLanguage}.`,

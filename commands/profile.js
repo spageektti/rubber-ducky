@@ -4,9 +4,7 @@ const getUserModel = require("../user.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("profile")
-    .setDescription(
-      "Displays your profile information.",
-    ),
+    .setDescription("Displays your profile information."),
   async execute(interaction) {
     const User = await getUserModel();
     const user = interaction.user;

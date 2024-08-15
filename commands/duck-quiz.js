@@ -13,21 +13,21 @@ module.exports = {
 
     const questions = [
       {
-        id: "1",
+        id: 1,
         question: "What does a duck say when it’s coding in Python?",
         options: ["Quack()", 'print("Quack")', "duck.say()"],
         answer: 'print("Quack")',
         emojis: ["1️⃣", "2️⃣", "3️⃣"],
       },
       {
-        id: "2",
+        id: 2,
         question: "What’s a duck’s favorite programming language?",
         options: ["JavaScript", "C#", "QuackScript"],
         answer: "QuackScript",
         emojis: ["1️⃣", "2️⃣", "3️⃣"],
       },
       {
-        id: "3",
+        id: 3,
         question: "How does a duck debug its code?",
         options: [
           "By quacking at it",
@@ -41,25 +41,29 @@ module.exports = {
 
     let userDoc = await User.findOne({ where: { id: user.id } });
     if (!userDoc) {
-      userDoc = new User({
+      userDoc = {
         id: user.id,
         username: user.username,
         quackPoints: 0,
-      });
+        lastAnsweredQuestion: -1,
+      };
     }
 
-    const lastAnsweredQuestionId = userDoc.lastAnsweredQuestion;
-    const nextQuestion = questions.find((q) => q.id !== lastAnsweredQuestionId);
+    const unansweredQuestions = questions.filter(
+      (q) => q.id > userDoc.lastAnsweredQuestion,
+    );
 
-    if (!nextQuestion) {
+    if (unansweredQuestions.length === 0) {
       await interaction.reply(
         "You have answered all available questions. Check back later for new ones!",
       );
       return;
     }
 
+    const nextQuestion = unansweredQuestions[0];
+
     userDoc.lastAnsweredQuestion = nextQuestion.id;
-    await userDoc.save();
+    await User.save(userDoc);
 
     const questionEmbed = {
       color: 0xffff00,
@@ -85,9 +89,6 @@ module.exports = {
     }
 
     const filter = (reaction, reactionUser) => {
-      console.log(
-        `Reaction received: ${reaction.emoji.name} by ${reactionUser.username}`,
-      );
       return (
         nextQuestion.emojis.includes(reaction.emoji.name) &&
         reactionUser.id === user.id
@@ -100,8 +101,6 @@ module.exports = {
     });
 
     collector.on("collect", async (reaction) => {
-      console.log(`Collected reaction: ${reaction.emoji.name}`);
-
       const selectedOptionIndex = nextQuestion.emojis.indexOf(
         reaction.emoji.name,
       );
@@ -111,7 +110,7 @@ module.exports = {
 
       if (selectedOptionIndex === correctAnswerIndex) {
         userDoc.quackPoints += 1;
-        await userDoc.save();
+        await User.save(userDoc);
         await interaction.followUp(
           "Correct! You know your quacks from your quacks! 🦆",
         );
@@ -125,7 +124,6 @@ module.exports = {
     });
 
     collector.on("end", (collected) => {
-      console.log(`Collector ended. Collected ${collected.size} reactions.`);
       if (collected.size === 0) {
         interaction.followUp("Time's up! No valid responses received.");
       }
