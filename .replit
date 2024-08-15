@@ -1,4 +1,5 @@
 entrypoint = "index.js"
+modules = ["nodejs-22"]
 
 [interpreter]
 command = [
@@ -71,3 +72,7 @@ support = true
       sourceMaps = true
       stopOnEntry = false
       type = "pwa-node"
+
+[[ports]]
+localPort = 3000
+externalPort = 80
