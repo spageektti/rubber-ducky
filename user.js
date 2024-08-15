@@ -18,6 +18,10 @@ async function getUserModel() {
       type: "number",
       default: 0,
     },
+    lastAnsweredQuestion: {
+      type: "string",
+      default: null,
+    },
   });
 
   return db.addSchema("user", UserSchema);
