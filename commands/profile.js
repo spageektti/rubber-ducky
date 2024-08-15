@@ -1,20 +1,19 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const Database = require("@replit/database");
-const db = new Database();
+const getUserModel = require("../user.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("profile")
     .setDescription(
-      "Displays your profile information with additional Rubber Ducky data.",
+      "Displays your profile information.",
     ),
   async execute(interaction) {
+    const User = await getUserModel();
     const user = interaction.user;
-    const member = interaction.guild.members.cache.get(user.id);
 
-    const userProfile = await db.get(user.id);
+    const userDoc = await User.findOne({ where: { id: user.id } });
 
-    if (userProfile) {
+    if (userDoc) {
       const profileEmbed = {
         color: 0x00ff00,
         title: `${user.username}'s Profile`,
@@ -22,26 +21,20 @@ module.exports = {
           url: user.displayAvatarURL({ dynamic: true }),
         },
         fields: [
-          { name: "Username", value: user.tag, inline: true },
-          { name: "Nickname", value: member.nickname || "None", inline: true },
-          {
-            name: "Joined Server",
-            value: member.joinedAt.toDateString(),
-            inline: true,
-          },
+          { name: "Username", value: user.username, inline: true },
           {
             name: "Ducky Rank",
-            value: userProfile.duckyRank || "No rank yet!",
+            value: userDoc.duckyRank || "No rank yet!",
             inline: true,
           },
           {
             name: "Favorite Programming Language",
-            value: userProfile.favoriteLanguage,
+            value: userDoc.favoriteLanguage || "Not set",
             inline: true,
           },
           {
             name: "Quack Points",
-            value: `${userProfile.quackPoints || 0} 🦆`,
+            value: `${userDoc.quackPoints || 0} 🦆`,
             inline: true,
           },
         ],
@@ -54,7 +47,7 @@ module.exports = {
       interaction.reply({ embeds: [profileEmbed] });
     } else {
       interaction.reply(
-        "No additional data found. Use `/setprofile` to create your profile!",
+        "No profile found. Use `/set-fav-language` to get started!",
       );
     }
   },
