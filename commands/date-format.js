@@ -41,10 +41,7 @@ module.exports = {
           { name: "Short", value: "short" },
           { name: "Long", value: "long" },
           { name: "ISO", value: "iso" },
-        )
-        .addChoice("Short", "short")
-        .addChoice("Long", "long")
-        .addChoice("ISO", "iso"),
+        ),
     ),
   async execute(interaction) {
     const date = interaction.options.getString("date");
