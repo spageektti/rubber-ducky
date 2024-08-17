@@ -13,9 +13,11 @@ module.exports = {
     ),
   async execute(interaction) {
     const color = interaction.options.getString("color");
-    const grayscaleColor = tinycolor(color).toName();
-    await interaction.reply(
-      `Quack! **Closest named color**: ${grayscaleColor}`,
-    );
+    const name = tinycolor(color).toName();
+    if (name == false) {
+      await interaction.reply(`Quack! The color doesn't have a name!`);
+      return;
+    }
+    await interaction.reply(`Quack! **Closest named color**: ${name}`);
   },
 };
