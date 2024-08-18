@@ -46,7 +46,7 @@ Rubber Ducky is licensed under the [GNU GPLv3](LICENSE). Feel free to use, modif
 
 ## 📫 Contact
 
-Have questions or need help? Join our [support server]([https://discord.gg/yourserverlink](https://discord.gg/nwZ9Pfsu)).
+Have questions or need help? Join our [support server](https://discord.gg/nwZ9Pfsu).
 
 ---
 
