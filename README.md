@@ -1,5 +1,8 @@
 # 🦆 Rubber Ducky Bot
 
+![Zrzut ekranu_20240909_201149](https://github.com/user-attachments/assets/bdc21ad9-ff56-4a80-8043-dda5fa48c46b)
+![Zrzut ekranu_20240909_201527](https://github.com/user-attachments/assets/dd72d6a7-44e8-4eba-8f26-6bbfe606581f)
+
 Welcome to **Rubber Ducky**, your friendly, quacky, open-source, and versatile Discord bot! Whether you're looking for some fun interactions or a reliable assistant for your development projects, Rubber Ducky is here to make your Discord experience more enjoyable and productive.
 
 ---
